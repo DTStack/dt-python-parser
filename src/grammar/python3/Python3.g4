@@ -135,6 +135,7 @@ tokens {
 /*
  * parser rules
  */
+program: single_input | file_input | eval_input;
 
 /// single_input: NEWLINE | simple_stmt | compound_stmt NEWLINE
 single_input: NEWLINE | simple_stmt | compound_stmt NEWLINE;

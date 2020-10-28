@@ -153,6 +153,8 @@
  * NB: compound_stmt in single_input is followed by extra NEWLINE!
  */
 
+program: single_input | file_input | eval_input
+    ;
 single_input: NEWLINE | simple_stmt | compound_stmt NEWLINE
     ;
 file_input: (NEWLINE | stmt)* ENDMARKER
