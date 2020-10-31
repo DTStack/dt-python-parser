@@ -32,11 +32,13 @@ export class ParserErrorCollector extends ErrorListener {
         recognizer: Recognizer,
         offendingSymbol: Token,
         line: number,
-        charPositionInLine: number, msg: string, e: any,
+        charPositionInLine: number, 
+        msg: string, 
+        e: any,
     ) {
-        console.log('what you are? ',recognizer)
+        console.log('what you are? ',offendingSymbol,recognizer,e)
         let endCol = charPositionInLine + 1;
-        if (offendingSymbol &&offendingSymbol.text !== null) {
+        if (offendingSymbol && offendingSymbol.text !== null) {
             endCol = charPositionInLine + offendingSymbol.text.length;
         }
         this._errors.push({

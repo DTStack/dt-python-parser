@@ -12,8 +12,9 @@ export default class Python extends BasicParser {
     const lexer = (<unknown>new Python2Lexer(chars)) as Lexer;
     return lexer;
   }
+
   public createParserFromLexer(lexer: Lexer) {
-    const tokenStream = new CommonTokenStream(lexer);
-    return new Python2Parser(tokenStream);
+    const tokens = new CommonTokenStream(lexer);
+    return new Python2Parser(tokens);
   }
 }
