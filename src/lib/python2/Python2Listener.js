@@ -1,4 +1,4 @@
-// Generated from /Users/libowen/Desktop/Code/gitlab.prod.dtstack.cn/dt-insight-front/infrastructure/dt-python-parser/src/grammar/python2/Python2.g4 by ANTLR 4.8
+// Generated from /Users/libowen/Desktop/Code/gitlab.prod.dtstack.cn/dt-insight-front/infrastructure/dt-python-parser/src/grammar/python2/Python2.g4 by ANTLR 4.7.2
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -10,15 +10,6 @@ function Python2Listener() {
 
 Python2Listener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
 Python2Listener.prototype.constructor = Python2Listener;
-
-// Enter a parse tree produced by Python2Parser#program.
-Python2Listener.prototype.enterProgram = function(ctx) {
-};
-
-// Exit a parse tree produced by Python2Parser#program.
-Python2Listener.prototype.exitProgram = function(ctx) {
-};
-
 
 // Enter a parse tree produced by Python2Parser#single_input.
 Python2Listener.prototype.enterSingle_input = function(ctx) {

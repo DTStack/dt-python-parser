@@ -1,4 +1,4 @@
-// Generated from /Users/libowen/Desktop/Code/gitlab.prod.dtstack.cn/dt-insight-front/infrastructure/dt-python-parser/src/grammar/python2/Python2.g4 by ANTLR 4.8
+// Generated from /Users/libowen/Desktop/Code/gitlab.prod.dtstack.cn/dt-insight-front/infrastructure/dt-python-parser/src/grammar/python2/Python2.g4 by ANTLR 4.7.2
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -508,81 +508,6 @@ var decisionsToDFA = atn.decisionToState.map( function(ds, index) { return new a
 function Python2Lexer(input) {
 	antlr4.Lexer.call(this, input);
     this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.PredictionContextCache());
-
-	    var old_lexer = Python2Lexer;
-	    Python2Lexer = function() {
-	        old_lexer.apply(this, arguments);
-	        this._openBRCount       = 0
-	        this._suppressNewlines  = false
-	        this._lineContinuation  = false
-	        this._tokens            = new TokenQueue();
-	        this._indents           = new IndentStack();
-	        antlr4.Lexer.prototype.reset.call(this);
-	    }
-
-	    Python2Lexer.prototype = Object.create(old_lexer.prototype);
-	    Python2Lexer.prototype.constructor = Python2Lexer;
-
-	    Python2Lexer.prototype.nextToken = function() {
-	        if (!this._tokens.empty()) {
-	            return this._tokens.deq();
-	        } else {
-	            var t = antlr4.Lexer.prototype.nextToken.call(this);
-	            if (t.type !== Python2Parser.EOF) return t;
-	            else {
-	                if (!this._suppressNewlines) {
-	                    this.emitNewline();
-	                }
-	                this.emitFullDedent();
-	                this.emitEndmarker();
-	                this.emitEndToken(t);
-	                return this._tokens.deq();
-	            }
-	        }
-
-	    }
-
-	    Python2Lexer.prototype.emitEndToken = function (token) {
-	        this._tokens.enq(token);
-	    }
-
-	    Python2Lexer.prototype.emitIndent = function (length = 0, text = 'INDENT') {
-	        var t = this.createToken(Python2Parser.INDENT, text, length);
-	        this._tokens.enq(t);
-	    }
-
-	    Python2Lexer.prototype.emitDedent = function () {
-	        var t = this.createToken(Python2Parser.DEDENT, 'DEDENT');
-	        this._tokens.enq(t);
-	    }
-
-	    Python2Lexer.prototype.emitFullDedent = function () {
-	        while (!this._indents.empty()) {
-	            this._indents.pop();
-	            this.emitDedent();
-	        }
-	    }
-
-	    Python2Lexer.prototype.emitEndmarker = function () {
-	        var t = this.createToken(Python2Parser.ENDMARKER, 'ENDMARKER');
-	        this._tokens.enq(t);
-	    }
-
-	    Python2Lexer.prototype.emitNewline = function () {
-	        var t = this.createToken(Python2Parser.NEWLINE, 'NEWLINE');
-	        this._tokens.enq(t);
-	    }   
-
-	    Python2Lexer.prototype.createToken = function (type_, text="", length=0) {
-	        var start = this._tokenStartCharIndex;
-	        var stop = start + length;
-	        var t = new CommonToken(this._tokenFactorySourcePair,
-	                type_, this.DEFAULT_TOKEN_CHANNEL,
-	                start, stop);
-	        t.text = text;
-	        return t;
-	    }  
-
     return this;
 }
 
@@ -746,6 +671,82 @@ Python2Lexer.prototype.ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4",
 
 Python2Lexer.prototype.grammarFileName = "Python2.g4";
 
+
+    var old_lexer = Python2Lexer;
+    Python2Lexer = function() {
+        old_lexer.apply(this, arguments);
+        this._openBRCount       = 0
+        this._suppressNewlines  = false
+        this._lineContinuation  = false
+        this._tokens            = new TokenQueue();
+        this._indents           = new IndentStack();
+        antlr4.Lexer.prototype.reset.call(this);
+    }
+
+    Python2Lexer.prototype = Object.create(old_lexer.prototype);
+    Python2Lexer.prototype.constructor = Python2Lexer;
+
+    Python2Lexer.prototype.nextToken = function() {
+        if (!this._tokens.empty()) {
+            return this._tokens.deq();
+        } else {
+            var t = antlr4.Lexer.prototype.nextToken.call(this);
+            if (t.type !== Python2Parser.EOF) return t;
+            else {
+                if (!this._suppressNewlines) {
+                    this.emitNewline();
+                }
+                this.emitFullDedent();
+                this.emitEndmarker();
+                this.emitEndToken(t);
+                return this._tokens.deq();
+            }
+        }
+
+    }
+
+    Python2Lexer.prototype.emitEndToken = function (token) {
+        this._tokens.enq(token);
+    }
+
+    Python2Lexer.prototype.emitIndent = function (length = 0, text = 'INDENT') {
+        var t = this.createToken(Python2Parser.INDENT, text, length);
+        this._tokens.enq(t);
+    }
+
+    Python2Lexer.prototype.emitDedent = function () {
+        var t = this.createToken(Python2Parser.DEDENT, 'DEDENT');
+        this._tokens.enq(t);
+    }
+
+    Python2Lexer.prototype.emitFullDedent = function () {
+        while (!this._indents.empty()) {
+            this._indents.pop();
+            this.emitDedent();
+        }
+    }
+
+    Python2Lexer.prototype.emitEndmarker = function () {
+        var t = this.createToken(Python2Parser.ENDMARKER, 'ENDMARKER');
+        this._tokens.enq(t);
+    }
+
+    Python2Lexer.prototype.emitNewline = function () {
+        var t = this.createToken(Python2Parser.NEWLINE, 'NEWLINE');
+        this._tokens.enq(t);
+    }   
+
+    Python2Lexer.prototype.createToken = function (type_, text="", length=0) {
+        var start = this._tokenStartCharIndex;
+        var stop = start + length;
+        var t = new CommonToken(this._tokenFactorySourcePair,
+                type_, this.DEFAULT_TOKEN_CHANNEL,
+                start, stop);
+        t.text = text;
+        return t;
+    }  
+
+
 Python2Lexer.prototype.action = function(localctx, ruleIndex, actionIndex) {
 	switch (ruleIndex) {
 	case 72:
@@ -812,7 +813,6 @@ Python2Lexer.prototype.WHITESPACE_action = function(localctx , actionIndex) {
 
 		if (this._tokenStartColumn == 0 && this._openBRCount == 0
 		    && !this._lineContinuation) {
-
 		    var la = this._input.LA(1);
 		    if ([ord('\r'), ord('\n'), ord('#'), -1].indexOf(la)===-1)
 		        this._suppressNewlines = false

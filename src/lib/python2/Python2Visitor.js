@@ -1,4 +1,4 @@
-// Generated from /Users/libowen/Desktop/Code/gitlab.prod.dtstack.cn/dt-insight-front/infrastructure/dt-python-parser/src/grammar/python2/Python2.g4 by ANTLR 4.8
+// Generated from /Users/libowen/Desktop/Code/gitlab.prod.dtstack.cn/dt-insight-front/infrastructure/dt-python-parser/src/grammar/python2/Python2.g4 by ANTLR 4.7.2
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -11,12 +11,6 @@ function Python2Visitor() {
 
 Python2Visitor.prototype = Object.create(antlr4.tree.ParseTreeVisitor.prototype);
 Python2Visitor.prototype.constructor = Python2Visitor;
-
-// Visit a parse tree produced by Python2Parser#program.
-Python2Visitor.prototype.visitProgram = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
 
 // Visit a parse tree produced by Python2Parser#single_input.
 Python2Visitor.prototype.visitSingle_input = function(ctx) {
