@@ -36,7 +36,6 @@ export class ParserErrorCollector extends ErrorListener {
         msg: string, 
         e: any,
     ) {
-        console.log('what you are? ',offendingSymbol,recognizer,e)
         let endCol = charPositionInLine + 1;
         if (offendingSymbol && offendingSymbol.text !== null) {
             endCol = charPositionInLine + offendingSymbol.text.length;
