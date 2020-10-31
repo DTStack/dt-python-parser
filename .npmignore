@@ -1,0 +1,11 @@
+node_modules
+/test/
+package-lock.json
+.DS_Store
+.git
+.github
+.history
+site
+src/
+docs
+lib/grammar
