@@ -9,7 +9,7 @@
  *
  * Compiles with ANTLR 4.7, generated lexer/parser for Python 2 target.
  */
- 
+
  grammar Python2;
 
  tokens { INDENT, DEDENT, NEWLINE, ENDMARKER }
@@ -153,8 +153,6 @@
  * NB: compound_stmt in single_input is followed by extra NEWLINE!
  */
 
-program: single_input | file_input | eval_input
-    ;
 single_input: NEWLINE | simple_stmt | compound_stmt NEWLINE
     ;
 file_input: (NEWLINE | stmt)* ENDMARKER
@@ -379,7 +377,7 @@ encoding_decl: NAME
 
 yield_expr: 'yield' 'from'? (testlist)?
     ;
-    
+
 /*****************************************************************************
  *                               Lexer rules
  *****************************************************************************/
@@ -425,7 +423,6 @@ WHITESPACE: ('\t' | ' ')+
 {
 if (this._tokenStartColumn == 0 && this._openBRCount == 0
     && !this._lineContinuation) {
-
     var la = this._input.LA(1);
     if ([ord('\r'), ord('\n'), ord('#'), -1].indexOf(la)===-1)
         this._suppressNewlines = false
