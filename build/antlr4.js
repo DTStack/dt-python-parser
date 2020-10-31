@@ -1,15 +1,16 @@
 const path = require('path');
 const exec = require('child_process').exec;
 
-const antlr4 = path.resolve(__dirname, 'antlr-4.8-complete.jar');
+const antlr4 = path.resolve(__dirname, 'antlr4-4.7.2-complete.jar');
 const grammars = path.resolve(__dirname, '../src/grammar');
 const output = path.resolve(__dirname, '../src/lib');
 
-const entry = ['python', 'python2', 'python3'];
+const entry = ['python2', 'python3'];
 
 entry.forEach(language => {
   const cmd = `
-        java -jar ${antlr4}
+        java       
+        -jar ${antlr4}
         -Dlanguage=JavaScript 
         -visitor
         -listener
