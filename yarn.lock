@@ -768,7 +768,15 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-antlr4@^4.8.0:
+antlr4-autosuggest@^0.0.28:
+  version "0.0.28"
+  resolved "https://registry.npm.taobao.org/antlr4-autosuggest/download/antlr4-autosuggest-0.0.28.tgz#1010bf9f675b6abd4b7876442a8a7c07a16939f8"
+  integrity sha1-EBC/n2dbar1LeHZEKop8B6FpOfg=
+  dependencies:
+    antlr4 "^4.7.0"
+    debug "^3.1.0"
+
+antlr4@^4.7.0, antlr4@^4.8.0:
   version "4.8.0"
   resolved "https://registry.npm.taobao.org/antlr4/download/antlr4-4.8.0.tgz#f938ec171be7fc2855cd3a533e87647185b32b6a"
   integrity sha1-+TjsFxvn/ChVzTpTPodkcYWzK2o=
@@ -1231,6 +1239,13 @@ debug@^2.2.0, debug@^2.3.3:
   integrity sha1-XRKFFd8TT/Mn6QpMk/Tgd6U2NB8=
   dependencies:
     ms "2.0.0"
+
+debug@^3.1.0:
+  version "3.2.6"
+  resolved "https://registry.npm.taobao.org/debug/download/debug-3.2.6.tgz?cache=0&sync_timestamp=1600502855763&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdebug%2Fdownload%2Fdebug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
+  integrity sha1-6D0X3hbYp++3cX7b5fsQE17uYps=
+  dependencies:
+    ms "^2.1.1"
 
 debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
   version "4.2.0"
@@ -2911,7 +2926,7 @@ ms@2.0.0:
   resolved "https://registry.npm.taobao.org/ms/download/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
 
-ms@2.1.2:
+ms@2.1.2, ms@^2.1.1:
   version "2.1.2"
   resolved "https://registry.npm.taobao.org/ms/download/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha1-0J0fNXtEP0kzgqjrPM0YOHKuYAk=
