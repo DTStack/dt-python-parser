@@ -12,6 +12,12 @@ function Python2Visitor() {
 Python2Visitor.prototype = Object.create(antlr4.tree.ParseTreeVisitor.prototype);
 Python2Visitor.prototype.constructor = Python2Visitor;
 
+// Visit a parse tree produced by Python2Parser#root.
+Python2Visitor.prototype.visitRoot = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by Python2Parser#single_input.
 Python2Visitor.prototype.visitSingle_input = function(ctx) {
   return this.visitChildren(ctx);

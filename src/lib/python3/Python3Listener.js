@@ -11,6 +11,15 @@ function Python3Listener() {
 Python3Listener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
 Python3Listener.prototype.constructor = Python3Listener;
 
+// Enter a parse tree produced by Python3Parser#root.
+Python3Listener.prototype.enterRoot = function(ctx) {
+};
+
+// Exit a parse tree produced by Python3Parser#root.
+Python3Listener.prototype.exitRoot = function(ctx) {
+};
+
+
 // Enter a parse tree produced by Python3Parser#single_input.
 Python3Listener.prototype.enterSingle_input = function(ctx) {
 };

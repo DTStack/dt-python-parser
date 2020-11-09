@@ -11,6 +11,15 @@ function Python2Listener() {
 Python2Listener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
 Python2Listener.prototype.constructor = Python2Listener;
 
+// Enter a parse tree produced by Python2Parser#root.
+Python2Listener.prototype.enterRoot = function(ctx) {
+};
+
+// Exit a parse tree produced by Python2Parser#root.
+Python2Listener.prototype.exitRoot = function(ctx) {
+};
+
+
 // Enter a parse tree produced by Python2Parser#single_input.
 Python2Listener.prototype.enterSingle_input = function(ctx) {
 };
