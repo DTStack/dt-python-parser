@@ -1,6 +1,6 @@
 {
   "name": "dt-python-parser",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "dt-python-parser",
   "main": "dist/index.js",
   "scripts": {
