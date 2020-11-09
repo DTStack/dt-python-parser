@@ -1,8 +1,8 @@
 import { InputStream, CommonTokenStream, Lexer } from 'antlr4';
-import { Python3Lexer } from '../lib/python3/python3Lexer';
-import { Python3Parser } from '../lib/python3/python3Parser';
-export * from '../lib/python3/python3Listener';
-export * from '../lib/python3/python3Visitor';
+import { Python3Lexer } from '../lib/python3/Python3Lexer';
+import { Python3Parser } from '../lib/python3/Python3Parser';
+export * from '../lib/python3/Python3Listener';
+export * from '../lib/python3/Python3Visitor';
 
 import BasicParser from './common/BasicParser';
 
