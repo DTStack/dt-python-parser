@@ -23,7 +23,7 @@ export default abstract class BasicParser<C = any> {
         parser.removeErrorListeners();
         parser.addErrorListener(new ParserErrorListener(errorListener));
 
-        const parserTree = parser.file_input();
+        const parserTree = parser.root();
 
         return parserTree;
     }
@@ -38,7 +38,7 @@ export default abstract class BasicParser<C = any> {
         parser.removeErrorListeners();
         parser.addErrorListener(new ParserErrorCollector(syntaxErrors));
 
-        parser.file_input();
+        parser.root();
 
         return lexerError.concat(syntaxErrors);
     }
@@ -90,7 +90,7 @@ export default abstract class BasicParser<C = any> {
         const parser = this.createParser(input);
         this._parser = parser;
 
-        const tree = parser.file_input();
+        const tree = parser.root();
         return tree.toStringTree(parser.ruleNames);
     }
 
