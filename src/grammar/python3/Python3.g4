@@ -140,7 +140,12 @@ tokens { INDENT, DEDENT }
  * parser rules
  */
 
-/// single_input: NEWLINE | simple_stmt | compound_stmt NEWLINE
+root
+    : (single_input
+    | file_input
+    | eval_input)? EOF
+    ;
+
 single_input
  : NEWLINE
  | simple_stmt
