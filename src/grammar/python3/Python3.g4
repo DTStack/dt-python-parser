@@ -153,6 +153,7 @@ single_input
  ;
 
 /// file_input: (NEWLINE | stmt)* ENDMARKER
+
 file_input
  : ( NEWLINE | stmt )* EOF
  ;
@@ -873,8 +874,16 @@ RIGHT_SHIFT_ASSIGN : '>>=';
 POWER_ASSIGN : '**=';
 IDIV_ASSIGN : '//=';
 
+/*
+* 原版
 SKIP_
- : ( SPACES | COMMENT | LINE_JOINING ) -> skip
+ : ( SPACES | COMMENT | LINE_JOINING) -> skip
+ ;
+ */
+
+
+SKIP_
+ : ( SPACES | COMMENT  ) -> skip
  ;
 
 UNKNOWN_CHAR
@@ -1021,9 +1030,9 @@ fragment COMMENT
  : '#' ~[\r\n]*
  ;
 
-fragment LINE_JOINING
- : '\\' SPACES? ( '\r'? '\n' | '\r' )
- ;
+// fragment LINE_JOINING
+//  : '\\' SPACES? ( '\r'? '\n' | '\r' )
+//  ;
 
 /// id_start     ::=  <all characters in general categories Lu, Ll, Lt, Lm, Lo, Nl, the underscore, and characters with the Other_ID_Start property>
 fragment ID_START
