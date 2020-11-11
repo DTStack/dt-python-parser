@@ -165,7 +165,7 @@ eval_input
 
 /// decorator: '@' dotted_name [ '(' [arglist] ')' ] NEWLINE
 decorator
- : '@' dotted_name ( '(' arglist? ')' )? NEWLINE
+ : '@' dotted_name ( '(' arglist? ')' )? NEWLINE?
  ;
 
 /// decorators: decorator+
@@ -230,7 +230,7 @@ stmt
 
 /// simple_stmt: small_stmt (';' small_stmt)* [';'] NEWLINE
 simple_stmt
- : small_stmt ( ';' small_stmt )* ';'? NEWLINE
+ : small_stmt ( ';' small_stmt )* ';'? NEWLINE?
  ;
 
 /// small_stmt: (expr_stmt | del_stmt | pass_stmt | flow_stmt |
