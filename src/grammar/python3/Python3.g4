@@ -165,7 +165,7 @@ eval_input
 
 /// decorator: '@' dotted_name [ '(' [arglist] ')' ] NEWLINE
 decorator
- : '@' dotted_name ( '(' arglist? ')' )? NEWLINE?
+ : '@' dotted_name ( '(' arglist? ')' )? NEWLINE
  ;
 
 /// decorators: decorator+
@@ -230,16 +230,16 @@ stmt
 
 /// simple_stmt: small_stmt (';' small_stmt)* [';'] NEWLINE
 simple_stmt
- : small_stmt ( ';' small_stmt )* ';'? NEWLINE?
+ : small_stmt ( ';' small_stmt )* ';'? NEWLINE
  ;
 
 /// small_stmt: (expr_stmt | del_stmt | pass_stmt | flow_stmt |
 ///              import_stmt | global_stmt | nonlocal_stmt | assert_stmt)
 small_stmt
- : expr_stmt
- | del_stmt
- | pass_stmt
- | flow_stmt
+ : expr_stmt  // 表达式
+ | del_stmt  // 定义
+ | pass_stmt 
+ | flow_stmt // 各种处理语句
  | import_stmt
  | global_stmt
  | nonlocal_stmt
@@ -745,7 +745,7 @@ NEWLINE
    ) {
      let newLine = this.text.replace(/[^\r\n]+/g, '');
      let spaces = this.text.replace(/[\r\n]+/g, '');
-
+     
      // Strip newlines inside open clauses except if we are near EOF. We keep NEWLINEs near EOF to
      // satisfy the final newline needed by the single_put rule used by the REPL.
      let next = this._input.LA(1);

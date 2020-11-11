@@ -943,7 +943,7 @@ Python3Lexer.prototype.NEWLINE_action = function(localctx , actionIndex) {
 
 		     let newLine = this.text.replace(/[^\r\n]+/g, '');
 		     let spaces = this.text.replace(/[\r\n]+/g, '');
-
+		     
 		     // Strip newlines inside open clauses except if we are near EOF. We keep NEWLINEs near EOF to
 		     // satisfy the final newline needed by the single_put rule used by the REPL.
 		     let next = this._input.LA(1);
