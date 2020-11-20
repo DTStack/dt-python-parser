@@ -7,14 +7,14 @@ export * from '../lib/python3/Python3Visitor';
 import BasicParser from './common/BasicParser';
 
 export default class Python extends BasicParser {
-  public createLexer(input: string): Lexer {
-    const chars = new InputStream(input);
-    const lexer = (<unknown>new Python3Lexer(chars)) as Lexer;
-    return lexer;
-  }
+    public createLexer(input: string): Lexer {
+        const chars = new InputStream(input);
+        const lexer = (<unknown>new Python3Lexer(chars)) as Lexer;
+        return lexer;
+    }
 
-  public createParserFromLexer(lexer: Lexer) {
-    const tokens = new CommonTokenStream(lexer);
-    return new Python3Parser(tokens);
-  }
+    public createParserFromLexer(lexer: Lexer) {
+        const tokens = new CommonTokenStream(lexer);
+        return new Python3Parser(tokens);
+    }
 }
