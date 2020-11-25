@@ -18,6 +18,7 @@
   "keywords": [
     "python",
     "parser",
+    "bigdata",
     "antlr4"
   ],
   "author": "chenfeng@dtstack.com",
@@ -48,7 +49,7 @@
     "typescript": "^4.0.5"
   },
   "dependencies": {
-    "@types/antlr4": "^4.7.2",
-    "antlr4": "^4.8.0"
+    "@types/antlr4": "4.7.2",
+    "antlr4": "4.8.0"
   }
 }
