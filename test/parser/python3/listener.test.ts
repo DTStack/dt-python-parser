@@ -17,7 +17,6 @@ describe('Python3 Listener Tests', (): void => {
             }
         }
         const listenIfName: any = new MyListener();
-
         await parser.listen(listenIfName, parserTree);
         expect(result).toBe(`sys`);
     });

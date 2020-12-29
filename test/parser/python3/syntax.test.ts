@@ -10,14 +10,12 @@ describe('Python3 Syntax Tests', () => {
     test('the print wrong example', () => {
         const example = `! print('abc')`;
         const result = parser.validate(example);
-        console.log(result);
         expect(result.length).toBe(1);
     });
 
     test('the first right example', () => {
         const example = `! a = 10\nif a > 5:\n    print("a bigger than 5")\nelse:\n    print("a smaller than 5")`;
         const result = parser.validate(example);
-        console.log();
         expect(result.length).toBe(1);
     });
     test('python3 for example', () => {
