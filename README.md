@@ -1,10 +1,24 @@
 # dt-python-parser
-![NPM version](https://img.shields.io/badge/npm-v0.8.0-blue) ![Build Status](https://img.shields.io/badge/build-passing-brightgreen) ![License Status](https://img.shields.io/badge/license-MIT-lightgrey)  
-This project is unified based on antlr4 for processing Python grammar, provide users with instantiation permissions, flexible use of grammar verification, lexer mode, visitor mode and listener mode. It is currently recommended to use with web-worker to improve performance
+
+[![NPM version][npm-image]][npm-url]
+
+[npm-image]: https://img.shields.io/npm/v/dt-python-parser.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/dt-python-parser
+
+[English](./README.md) | Simplified Chinese
+
+dt-python-parser is a **Python Parser** project based on [ANTLR4](https://github.com/antlr/antlr4) for the big data field. Through [ANTLR4](https://github.com/antlr/antlr4) the default generated Parser, Visitor and Listener objects, we can easily achieve the **Syntax Validation** (Syntax Validation), ** of Python statements Lexical analysis** (Tokenizer), **traverse AST** nodes and other functions. In addition, several auxiliary methods are provided, for example, to filter comments of type `#` and `"""` in Python statements.
+
+Supported Python syntax version:
+
+- Python2
+- Python3
+
+> Tip: The current Parser is the `Javascript` language version, if necessary, you can try to compile the Grammar file to other target languages
 
 ## Installation
 
-```javascript
+```bash
 // use npm
 npm i dt-python-parser --save
 
@@ -12,69 +26,176 @@ npm i dt-python-parser --save
 yarn add dt-python-parser
 ```
 
-## Usage
+## Use
 
-You have instantiation permission, so you can choose the functions you need. Here are a few examples
+### Syntax Validation
 
-### Syntax detection
-
-```javascript
-import { Python3 } from 'dt-python-parser';
-
-// Grammar Check
-export const ParserPython3 = (inputBlock: string | string[]) => {
-    try {
-        let resultArray;
-        const Python3Parser = new Python3();
-        if (Array.isArray(inputBlock)) {
-            resultArray = inputBlock.join('');
-        } else {
-            resultArray = inputBlock;
-        }
-        const result = Python3Parser.validate(resultArray);
-        return result[0];
-    } catch (e) {
-        return e;
-    }
-};
-```
-
-### Listener mode
+First, you need to declare the corresponding Parser object. Different Python syntax versions need to introduce different Parser object processing. For example, if it is for **Python2**, you need to introduce **Python2** Parser separately, here we use **Python3** As an example:
 
 ```javascript
-import { Python3, Python3Listner } from 'dt-python-parser';
+import {Python3Parser} from'dt-python-parser';
 
-// Grammar Check
-export const ParserPython3 = (inputBlock: string | string[]) => {
-    try {
-        let resultArray = [],
-            rersult = '';
-        const Python3Parser = new Python3();
-        if (Array.isArray(inputBlock)) {
-            resultArray = inputBlock.join('');
-        } else {
-            resultArray = inputBlock;
-        }
+const parser = new Python3Parser();
 
-        class MyListener extends Python3Listener {
-            enterFor_stmt(ctx): void {
-                result = ctx.getText().toLowerCase();
-            }
-        }
-
-        const [listenIfName, parserTree] = [new MyListener(), Python3Parser.parse(resultArray)];
-        Python3Parser.listen(listenIfName, parserTree);
-        return result;
-    } catch (e) {
-        return e;
-    }
-};
+const correctPython = `print('abc')\nprint('abc')\n`;
+const errors = parser.validate(correctPython);
+console.log(errors);
 ```
+
+Output:
+
+```javascript
+/*
+[]
+*/
+```
+
+Example of verification failure:
+
+```javascript
+const incorrectPython =
+    '! a = 10\nif a> 5:\n print("a bigger than 5")\nelse:\n print("a smaller than 5")';
+const errors = parser.validate(incorrectPython);
+console.log(errors);
+```
+
+Output:
+
+```javascript
+/*
+    [
+      {
+        startLine: 1,
+        endLine: 1,
+        startCol: 0,
+        endCol: 1,
+        message: "extraneous input'!' expecting {<EOF>,'def','return','raise','from','import','import','global','nonlocal','assert', 'if','while','for','try','with','lambda','not','None','True','False','class','yield','yield ','del','pass','continue','break','break', NEWLINE, NAME, STRING_LITERAL, BYTES_LITERAL, DECIMAL_INTEGER, OCT_INTEGER, HEX_INTEGER, BIN_INTEGER, FLOAT_NUMBER, IMAG_NUMBER, DECIMAL_INTEGER, HCTEXGER, HCTEXGER, FLOAT_NUMBER, IMAG_NUMBER,'...','*','(','[','+','-','~','{','@'}"
+      }
+    ]
+*/
+```
+
+First instantiate the Parser object, and then use the `validate` method to verify the Python statement. If the verification fails, an array containing the `error` information is returned.
+
+### Lexical Analysis (Tokenizer)
+
+In necessary scenarios, you can perform lexical analysis on Python sentences separately to obtain all Tokens objects:
+
+```javascript
+import {Python3Parser} from'dt-python-parser';
+
+const parser = new Python3Parser();
+const python ='for i in range(5):\n print(i)';
+const tokens = parser.getAllTokens(python);
+console.log(tokens);
+
+/*
+[
+      CommonToken {
+        source: [[Python3Lexer], [InputStream] ],
+        type: 14,
+        channel: 0,
+        start: 0,
+        stop: 2,
+        tokenIndex: -1,
+        line: 1,
+        column: 0,
+        _text: null
+      },
+    ...
+]
+*/
+```
+
+### Visitor mode (Visitor)
+
+Use Visitor mode to visit the specified node in the AST
+
+```javascript
+import {Python3Parser, Python3Visitor} from'dt-python-parser';
+
+const parser = new Python3Parser();
+const python = `import sys\nfor i in sys.argv:\n print(i)`;
+// parseTree
+const tree = parser.parse(python);
+class MyVisitor extends Python3Visitor {
+    // Override visitImport_name method
+    visitImport_name(ctx): void {
+        let importName = ctx
+            .getText()
+            .toLowerCase()
+            .match(/(?<=import).+/)?.[0];
+        console.log('ImportName', importName);
+    }
+}
+const visitor = new MyVisitor();
+visitor.visit(tree);
+
+/*
+ImportName sys
+*/
+```
+
+> Tip: When using Visitor mode, the method name of the node can be found in the Visitor file in the corresponding Python directory
+
+### Listener
+
+In Listener mode, use the ParseTreeWalker object provided by [ANTLR4](https://github.com/antlr/antlr4) to traverse the AST and call the corresponding method when entering each node.
+
+```javascript
+import {Python3Parser, Python3Listener} from'dt-python-parser';
+
+const parser = new Python3Parser();
+const python ='import sys\nfor i in sys.argv:\n print(i)';
+// parseTree
+const tree = parser.parse(python);
+class MyListener extends Python3Listener {
+    enterImport_name(ctx): void {
+        let importName = ctx
+            .getText()
+            .toLowerCase()
+            .match(/(?<=import).+/)?.[0];
+        console.log('ImportName', importName);
+    }
+}
+const listenTableName = new MyListener();
+parser.listen(listenTableName, tree);
+
+/*
+ImportName sys
+*/
+```
+
+> Tip: When using Listener mode, the method name of the node can be found in the Listener file in the corresponding Python directory
+
+### Clean up comment content
+
+Clear comments and leading and trailing spaces
+
+```javascript
+import {cleanPython} from'dt-python-parser';
+
+const python = `#it is for test\nfor i in range(5):\n print(i)`;
+const cleanedPython = cleanPython(python);
+console.log(cleanedPython);
+
+/*
+    for i in range(5):
+        print(i)
+*/
+```
+
+### Other API
+
+- parserTreeToString (input: string):
+Parse Python into `List-like` style tree string, generally used for testing
 
 ## Roadmap
 
-- add auto suggestion or autocomplete function
-- support parsers of other languages, upgrade to a collection of language parsers
+- Auto-complete
+- Code formatting
+- Grammar structure optimization
+- Execution efficiency optimization
 
 ## License
 
