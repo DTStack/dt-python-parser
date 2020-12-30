@@ -187,16 +187,15 @@ console.log(cleanedPython);
 
 ### 其他 API
 
--   parserTreeToString (input: string)
-
-将 Python 解析成 `List-like` 风格的树形字符串， 一般用于测试
+- parserTreeToString (input: string)
+： 将 Python 解析成 `List-like` 风格的树形字符串， 一般用于测试
 
 ## 路线图
 
--   Auto-complete
--   Format code
--   Grammar structure optimization
--   Optimize execution efficiency
+- Auto-complete
+- Code formatting
+- Grammar structure optimization
+- Execution efficiency optimization
 
 ## 许可证
 

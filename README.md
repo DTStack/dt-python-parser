@@ -187,16 +187,15 @@ console.log(cleanedPython);
 
 ### Other API
 
-- parserTreeToString (input: string)
-
+- parserTreeToString (input: string):
 Parse Python into `List-like` style tree string, generally used for testing
 
-## route map
+## Roadmap
 
 - Auto-complete
-- Format code
+- Code formatting
 - Grammar structure optimization
-- Optimize execution efficiency
+- Execution efficiency optimization
 
 ## License
 
