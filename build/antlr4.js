@@ -17,7 +17,6 @@ entry.forEach(language => {
         -o ${output}/${language}
         ${grammars}/${language}/*.g4
     `.replace(/\n/g, '');
-    console.log('cmd:', cmd);
     exec(cmd, err => {
         if (err) {
             console.error('Antlr4 build error: ' + language, err);
