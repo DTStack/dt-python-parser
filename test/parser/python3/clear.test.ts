@@ -1,14 +1,25 @@
-import { cleanPython } from '../../../src/utils';
+import { cleanPython, lexer } from '../../../src/utils';
 
 describe('Python3 clean tests', () => {
-    test('token counts', () => {
+    test('clear # comments', () => {
         const sql = `#it is for test\nfor i in range(5):\n    print(i)`;
         const tokens = cleanPython(sql);
         expect(tokens.length).toBe(31);
     });
-    test('token counts', () => {
+    test('clear """ comments', () => {
         const sql = `"""it is for test"""\nvar1 = "Hello World!"\nfor i in range(5):\n    print(i)`;
         const tokens = cleanPython(sql);
         expect(tokens.length).toBe(53);
+    });
+    test('get # comments', () => {
+        const sql = `#it is for test\nfor i in range(5):\n    print(i)`;
+        const tokens = lexer(sql);
+        expect(tokens?.[0]?.value).toBe('#it is for test');
+    });
+    test('get """ comments', () => {
+        const sql = `"""it is for test"""\nvar1 = "Hello World!"\nfor i in range(5):\n    print(i)`;
+        const tokens = lexer(sql);
+        console.log(tokens);
+        expect(tokens?.[0]?.value).toBe('"""it is for test"""');
     });
 });
