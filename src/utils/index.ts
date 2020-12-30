@@ -98,7 +98,7 @@ function lexer(input: string): Token[] {
 
         // 处理多行注释，以 """ 开始， """结束
         if (char === `"` && input[current + 1] === `"` && input[current + 2] === `"`) {
-            let value = '';
+            let value = '"""';
             const start = current;
             const startLine = line;
             current += 3;
