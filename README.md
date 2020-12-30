@@ -5,7 +5,7 @@
 [npm-image]: https://img.shields.io/npm/v/dt-python-parser.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/dt-python-parser
 
-[English](./README.md) | Simplified Chinese
+English | [简体中文](./README-zh_CN.md)
 
 dt-python-parser is a **Python Parser** project based on [ANTLR4](https://github.com/antlr/antlr4) for the big data field. Through [ANTLR4](https://github.com/antlr/antlr4) the default generated Parser, Visitor and Listener objects, we can easily achieve the **Syntax Validation** (Syntax Validation), ** of Python statements Lexical analysis** (Tokenizer), **traverse AST** nodes and other functions. In addition, several auxiliary methods are provided, for example, to filter comments of type `#` and `"""` in Python statements.
 
@@ -182,6 +182,31 @@ console.log(cleanedPython);
 /*
     for i in range(5):
         print(i)
+*/
+```
+
+
+### Get comment content
+
+Get comments of type `#` or `"""`
+
+```javascript
+import { lexer } from 'dt-python-parser';
+
+const python = `"""it is for test"""\nvar1 = "Hello World!"\nfor i in range(5):\n    print(i)`;
+const commentTokens = lexer(python);
+console.log(commentTokens);
+
+/*
+    [
+      {
+        type: 'Comment',
+        value: '"""it is for test"""',
+        start: 0,
+        lineNumber: 1,
+        end: 20
+      }
+    ]
 */
 ```
 
