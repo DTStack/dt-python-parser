@@ -185,6 +185,30 @@ console.log(cleanedPython);
 */
 ```
 
+### 获取注释内容
+
+获取 `#` 或 `"""` 类型的注释
+
+```javascript
+import { lexer } from 'dt-python-parser';
+
+const python = `"""it is for test"""\nvar1 = "Hello World!"\nfor i in range(5):\n    print(i)`;
+const commentTokens = lexer(python);
+console.log(commentTokens);
+
+/*
+    [
+      {
+        type: 'Comment',
+        value: '"""it is for test"""',
+        start: 0,
+        lineNumber: 1,
+        end: 20
+      }
+    ]
+*/
+```
+
 ### 其他 API
 
 - parserTreeToString (input: string)

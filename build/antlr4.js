@@ -8,21 +8,20 @@ const output = path.resolve(__dirname, '../src/lib');
 const entry = ['python2', 'python3'];
 
 entry.forEach(language => {
-  const cmd = `
-        java       
+    const cmd = `
+        java
         -jar ${antlr4}
-        -Dlanguage=JavaScript 
+        -Dlanguage=JavaScript
         -visitor
         -listener
         -o ${output}/${language}
         ${grammars}/${language}/*.g4
     `.replace(/\n/g, '');
-  console.log('cmd:', cmd);
-  exec(cmd, err => {
-    if (err) {
-      console.error('Antlr4 build error: ' + language, err);
-    } else {
-      console.log(`Build ${language} success.`);
-    }
-  });
+    exec(cmd, err => {
+        if (err) {
+            console.error('Antlr4 build error: ' + language, err);
+        } else {
+            console.log(`Build ${language} success.`);
+        }
+    });
 });
