@@ -19,7 +19,6 @@ describe('Python3 clean tests', () => {
     test('get """ comments', () => {
         const sql = `"""it is for test"""\nvar1 = "Hello World!"\nfor i in range(5):\n    print(i)`;
         const tokens = lexer(sql);
-        console.log(tokens);
         expect(tokens?.[0]?.value).toBe('"""it is for test"""');
     });
 });
