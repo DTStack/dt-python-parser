@@ -1,6 +1,6 @@
 {
   "name": "dt-python-parser",
-  "version": "0.9.0-beta",
+  "version": "0.9.1-beta",
   "description": "There are some python parsers built with antlr4, and it's mainly for the **BigData** domain.",
   "main": "dist/index.js",
   "scripts": {
@@ -11,9 +11,10 @@
     "check-types": "tsc --skipLibCheck",
     "test": "jest --coverage"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/DTStack/dt-python-parser"
+  "git repository": "https://github.com/DTStack/dt-python-parser",
+  "repository": "https://github.com/DTStack/dt-python-parser",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "python",
