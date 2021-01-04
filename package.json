@@ -13,16 +13,12 @@
   },
   "git repository": "https://github.com/DTStack/dt-python-parser",
   "repository": "https://github.com/DTStack/dt-python-parser",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "keywords": [
     "python",
     "parser",
     "monaco-editor",
     "bigdata",
-    "antlr4",
-    "bigdata"
+    "antlr4"
   ],
   "author": "chenfeng@dtstack.com",
   "license": "MIT",
