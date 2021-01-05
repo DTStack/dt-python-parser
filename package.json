@@ -1,6 +1,6 @@
 {
   "name": "dt-python-parser",
-  "version": "0.9.1-beta",
+  "version": "0.9.2-beta",
   "description": "There are some python parsers built with antlr4, and it's mainly for the **BigData** domain.",
   "main": "dist/index.js",
   "scripts": {
