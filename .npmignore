@@ -9,3 +9,10 @@ site
 src/
 docs
 lib/grammar
+coverage
+.vscode
+.eslintrc.js
+.prettierignore
+.prettierrc
+jest.config.js
+tsconfig.json
