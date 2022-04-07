@@ -569,8 +569,11 @@ factor
 
 /// power: atom trailer* ['**' factor]
 power
- : atom trailer* ( '**' factor )?
+ : atom_expr trailer* ( '**' factor )?
  ;
+
+/// atom_expr: (AWAIT)? atom trailer*;
+atom_expr: (AWAIT)? atom trailer*;
 
 /// atom: ('(' [yield_expr|testlist_comp] ')' |
 ///        '[' [testlist_comp] ']' |

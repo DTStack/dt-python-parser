@@ -414,6 +414,12 @@ Python3Visitor.prototype.visitPower = function(ctx) {
 };
 
 
+// Visit a parse tree produced by Python3Parser#atom_expr.
+Python3Visitor.prototype.visitAtom_expr = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by Python3Parser#atom.
 Python3Visitor.prototype.visitAtom = function(ctx) {
   return this.visitChildren(ctx);

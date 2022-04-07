@@ -614,6 +614,15 @@ Python3Listener.prototype.exitPower = function(ctx) {
 };
 
 
+// Enter a parse tree produced by Python3Parser#atom_expr.
+Python3Listener.prototype.enterAtom_expr = function(ctx) {
+};
+
+// Exit a parse tree produced by Python3Parser#atom_expr.
+Python3Listener.prototype.exitAtom_expr = function(ctx) {
+};
+
+
 // Enter a parse tree produced by Python3Parser#atom.
 Python3Listener.prototype.enterAtom = function(ctx) {
 };

@@ -56,4 +56,11 @@ describe('Python3 Syntax Tests', () => {
         expect(result.length).toBe(0);
     });
 
+    test('python3 await statement example', () => {
+        const example = `async def say_after(delay, what):
+            await asyncio.sleep(delay)
+            print(what)`;
+        const result = parser.validate(example);
+        expect(result.length).toBe(0);
+    });
 });
