@@ -1,4 +1,4 @@
-// Generated from /Users/libowen/Desktop/Code/gitlab.prod.dtstack.cn/dt-insight-front/infrastructure/dt-python-parser/src/grammar/python3/Python3.g4 by ANTLR 4.7.2
+// Generated from /Users/ziv/github.com/dt-python-parser/src/grammar/python3/Python3.g4 by ANTLR 4.7.2
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -50,6 +50,12 @@ Python3Visitor.prototype.visitDecorators = function(ctx) {
 
 // Visit a parse tree produced by Python3Parser#decorated.
 Python3Visitor.prototype.visitDecorated = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by Python3Parser#async_funcdef.
+Python3Visitor.prototype.visitAsync_funcdef = function(ctx) {
   return this.visitChildren(ctx);
 };
 
@@ -242,6 +248,12 @@ Python3Visitor.prototype.visitAssert_stmt = function(ctx) {
 
 // Visit a parse tree produced by Python3Parser#compound_stmt.
 Python3Visitor.prototype.visitCompound_stmt = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by Python3Parser#async_stmt.
+Python3Visitor.prototype.visitAsync_stmt = function(ctx) {
   return this.visitChildren(ctx);
 };
 

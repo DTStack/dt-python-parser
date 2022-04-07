@@ -1,4 +1,4 @@
-// Generated from /Users/libowen/Desktop/Code/gitlab.prod.dtstack.cn/dt-insight-front/infrastructure/dt-python-parser/src/grammar/python2/Python2.g4 by ANTLR 4.7.2
+// Generated from /Users/ziv/github.com/dt-python-parser/src/grammar/python2/Python2.g4 by ANTLR 4.7.2
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 var Python2Listener = require('./Python2Listener').Python2Listener;

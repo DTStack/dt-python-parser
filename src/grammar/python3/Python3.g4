@@ -175,8 +175,11 @@ decorators
 
 /// decorated: decorators (classdef | funcdef)
 decorated
- : decorators ( classdef | funcdef )
+ : decorators ( classdef | funcdef | async_funcdef )
  ;
+
+/// async def NAME 
+async_funcdef: ASYNC funcdef;
 
 /// funcdef: 'def' NAME parameters ['->' test] ':' suite
 funcdef
@@ -395,7 +398,12 @@ compound_stmt
  | funcdef
  | classdef
  | decorated
+ | async_stmt
  ;
+
+/// async_stmt
+ async_stmt
+  : ASYNC (funcdef | with_stmt | for_stmt);
 
 /// if_stmt: 'if' test ':' suite ('elif' test ':' suite)* ['else' ':' suite]
 if_stmt
@@ -663,7 +671,7 @@ comp_iter
 
 /// comp_for: 'for' exprlist 'in' or_test [comp_iter]
 comp_for
- : FOR exprlist IN or_test comp_iter?
+ : (ASYNC)? FOR exprlist IN or_test comp_iter?
  ;
 
 /// comp_if: 'if' test_nocond [comp_iter]
@@ -738,6 +746,8 @@ DEL : 'del';
 PASS : 'pass';
 CONTINUE : 'continue';
 BREAK : 'break';
+ASYNC : 'async';
+AWAIT : 'await';
 
 NEWLINE
  : ( {this.atStartOfInput()}?   SPACES

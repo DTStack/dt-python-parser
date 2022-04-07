@@ -1,4 +1,4 @@
-// Generated from /Users/libowen/Desktop/Code/gitlab.prod.dtstack.cn/dt-insight-front/infrastructure/dt-python-parser/src/grammar/python3/Python3.g4 by ANTLR 4.7.2
+// Generated from /Users/ziv/github.com/dt-python-parser/src/grammar/python3/Python3.g4 by ANTLR 4.7.2
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -71,6 +71,15 @@ Python3Listener.prototype.enterDecorated = function(ctx) {
 
 // Exit a parse tree produced by Python3Parser#decorated.
 Python3Listener.prototype.exitDecorated = function(ctx) {
+};
+
+
+// Enter a parse tree produced by Python3Parser#async_funcdef.
+Python3Listener.prototype.enterAsync_funcdef = function(ctx) {
+};
+
+// Exit a parse tree produced by Python3Parser#async_funcdef.
+Python3Listener.prototype.exitAsync_funcdef = function(ctx) {
 };
 
 
@@ -359,6 +368,15 @@ Python3Listener.prototype.enterCompound_stmt = function(ctx) {
 
 // Exit a parse tree produced by Python3Parser#compound_stmt.
 Python3Listener.prototype.exitCompound_stmt = function(ctx) {
+};
+
+
+// Enter a parse tree produced by Python3Parser#async_stmt.
+Python3Listener.prototype.enterAsync_stmt = function(ctx) {
+};
+
+// Exit a parse tree produced by Python3Parser#async_stmt.
+Python3Listener.prototype.exitAsync_stmt = function(ctx) {
 };
 
 

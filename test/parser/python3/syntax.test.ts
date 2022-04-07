@@ -39,4 +39,21 @@ describe('Python3 Syntax Tests', () => {
         expect(result.length).toBe(1);
         expect(result?.[0]?.message).toBe(`no viable alternative at input 'print('abc''`);
     });
+
+    test('python3 function statement example', () => {
+        const example = `def my_function():
+            print("Hello from a function")
+        `;
+        const result = parser.validate(example);
+        expect(result.length).toBe(0);
+    });
+
+    test('python3 async function statement example', () => {
+        const example = `async def my_function():
+            print("Hello from a function")
+        `;
+        const result = parser.validate(example);
+        expect(result.length).toBe(0);
+    });
+
 });
