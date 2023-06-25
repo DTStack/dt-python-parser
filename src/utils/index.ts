@@ -46,6 +46,13 @@ function lexer(input: string): Token[] {
         ++current;
     };
 
+    /**
+     * 判断是否是最后一个字符
+     */
+    const isEndOfInput = (current: number) => {
+        return current === input.length - 1
+    }
+
     while (current < input.length) {
         let char = input[current];
 
@@ -77,12 +84,12 @@ function lexer(input: string): Token[] {
             continue;
         }
 
-        // 处理单行注释，以 # 开始，\n 结束
+        // 处理单行注释，以 # 开始，以 \n 结束或者到达输入字符末尾
         if (char === '#') {
             let value = '';
             const start = current;
 
-            while (char !== '\n') {
+            while (char !== '\n' && !isEndOfInput(current)) {
                 value += char;
                 char = input[++current];
             }
