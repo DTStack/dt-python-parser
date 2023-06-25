@@ -33,7 +33,7 @@ yarn add dt-python-parser
 First, you need to declare the corresponding Parser object. Different Python syntax versions need to introduce different Parser object processing. For example, if it is for **Python2**, you need to introduce **Python2** Parser separately, here we use **Python3** As an example:
 
 ```javascript
-import {Python3Parser} from'dt-python-parser';
+import {Python3Parser} from 'dt-python-parser';
 
 const parser = new Python3Parser();
 
@@ -82,7 +82,7 @@ First instantiate the Parser object, and then use the `validate` method to verif
 In necessary scenarios, you can perform lexical analysis on Python sentences separately to obtain all Tokens objects:
 
 ```javascript
-import {Python3Parser} from'dt-python-parser';
+import {Python3Parser} from 'dt-python-parser';
 
 const parser = new Python3Parser();
 const python ='for i in range(5):\n print(i)';
@@ -112,7 +112,7 @@ console.log(tokens);
 Use Visitor mode to visit the specified node in the AST
 
 ```javascript
-import {Python3Parser, Python3Visitor} from'dt-python-parser';
+import {Python3Parser, Python3Visitor} from 'dt-python-parser';
 
 const parser = new Python3Parser();
 const python = `import sys\nfor i in sys.argv:\n print(i)`;
@@ -143,7 +143,7 @@ ImportName sys
 In Listener mode, use the ParseTreeWalker object provided by [ANTLR4](https://github.com/antlr/antlr4) to traverse the AST and call the corresponding method when entering each node.
 
 ```javascript
-import {Python3Parser, Python3Listener} from'dt-python-parser';
+import {Python3Parser, Python3Listener} from 'dt-python-parser';
 
 const parser = new Python3Parser();
 const python ='import sys\nfor i in sys.argv:\n print(i)';
@@ -173,7 +173,7 @@ ImportName sys
 Clear comments and leading and trailing spaces
 
 ```javascript
-import {cleanPython} from'dt-python-parser';
+import {cleanPython} from 'dt-python-parser';
 
 const python = `#it is for test\nfor i in range(5):\n print(i)`;
 const cleanedPython = cleanPython(python);
